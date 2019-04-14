@@ -98,20 +98,20 @@ int main(){
 	myStack obj;
 	int menu,val;
 	obj.setawal();
-	char lagi = 'y';
 	do{
 		menu = nama_menu();
 		switch(menu){
 			case 1:
 					cout << "Masukan Angka yang mau dipush: ";cin>>val;
 					obj.push(val);
+					cin.ignore();
+					cin.get();
 					break;
 			case 2:
 					if(obj.isEmpty()){
 						cout << "Tumpukan Kosong" << endl;
 					}else{
 						cout << "Angka ";obj.getTop(); cout << " akan dihapus";
-						cin.ignore();
 						cin.get();
 						obj.pop();
 					}
@@ -121,10 +121,12 @@ int main(){
 						cout << "Tumpukan Kosong" << endl;
 					}else{
 						cout << "Elemen Paling Atas adalah ";obj.getTop();
+						cin.get();
 					}
 					break;
 			case 4:
 					obj.print();
+					cin.get();
 					break;
 			case 5:
 					exit(0);
@@ -132,9 +134,9 @@ int main(){
 					cout <<"\t\nPilihan tidak ada";
 					cin.get();
 					break;
-		}cout << endl << "Kembali Ke Menu ? (y/n) ";cin>>lagi;
+		}
 		system("clear");
-	}while(lagi=='y');
+	}while (menu != 5);
 		cin.get();
 		return 0;
 }
@@ -155,6 +157,7 @@ int nama_menu(){
 	cout << "4. Print Stack List"<<endl;
 	cout << "5. Exit..."<<endl<<endl;
 	cout << "Pilihan : "; cin >> menu;
+	cin.ignore();
 	system("clear");
 	return menu;
 }
